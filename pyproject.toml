@@ -1,0 +1,21 @@
+[project]
+name = "project-03"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "harry-hdh",email = "hdh997@outlook.com"}
+]
+readme = "README.md"
+requires-python = "^3.11"
+dependencies = [
+    "pandas (>=3.0.2,<4.0.0)",
+    "faker (>=40.15.0,<41.0.0)",
+    "psycopg2-binary (>=2.9.11,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "project_03", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
