@@ -1,6 +1,6 @@
 import psycopg2
 import io
-from config import load_config
+from src.project_03.config import load_config
 
 def create_cur():
     config = load_config()
@@ -42,7 +42,7 @@ def truncate_table(table_name):
     except (psycopg2.DatabaseError, Exception) as error:
         print(error)
 
-def restart_sequence(table_name, column_name):
+def resync_sequence(table_name, column_name):
     sequence = fetch_sequence_name(table_name,column_name)
     command = f"ALTER SEQUENCE {sequence} RESTART;"
     try:
@@ -51,9 +51,9 @@ def restart_sequence(table_name, column_name):
         conn.commit()
         cur.close()
         conn.close()
-        print(f'Restarted sequence for {table_name}.')
+        print(f'resynced sequence for {table_name}.')
     except (psycopg2.DatabaseError, Exception) as error:
-        print(f"Error restart sequence for {table_name}: {error}")
+        print(f"Error resync sequence for {table_name}: {error}")
         return False
 
 #truncate_table('promotion_product')
